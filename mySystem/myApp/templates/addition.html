@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MDAS</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <select name="action">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+
+        <label>First Number:</label>
+        <input type="number" name="first_number" required><br>
+        <label>Second Number:</label>
+        <input type="number" name="second_number" required><br>
+       
+        <button type="submit">Calculate</button>
+    </form>
+
+    <h2>Result: {{ result }}</h2>
+</body>
+</html>
