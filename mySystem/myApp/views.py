@@ -23,7 +23,7 @@ def departmentApi(request,id=0):
         if departments_serializer.is_valid():
             departments_serializer.save()
             return JsonResponse("Added  Successfully",safe=False)
-        return JsonResponse("Failed to Add",safe=False)
+        return JsonResponse(str(departments_serializer.errors),safe=False)
     elif request.method=='PUT':
         department_data=JSONParser().parse(request)
         department=Departments.objects.get(DepartmentId=department_data['DepartmentId'])
@@ -31,7 +31,7 @@ def departmentApi(request,id=0):
         if departments_serializer.is_valid():
             departments_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
-        return JsonResponse("Failed to Update",safe=False)
+        return JsonResponse(str(departments_serializer.errors),safe=False)
     elif request.method=='DELETE':
         department=Departments.objects.get(DepartmentId=id)
         department.delete()
@@ -49,7 +49,7 @@ def employeeApi(request,id=0):
         if employees_serializer.is_valid():
             employees_serializer.save()
             return JsonResponse("Added Successfully",safe=False)
-        return JsonResponse("Failed to Add",safe=False)
+        return JsonResponse(str(employees_serializer.errors),safe=False)
     elif request.method=='PUT':
         employee_data=JSONParser().parse(request)
         employee=Employees.objects.get(EmployeeId=employee_data['EmployeeId'])
@@ -57,7 +57,7 @@ def employeeApi(request,id=0):
         if employees_serializer.is_valid():
             employees_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
-        return JsonResponse("Failed to Update",safe=False)
+        return JsonResponse(str(employees_serializer.errors),safe=False)
     elif request.method=='DELETE':
         employee=Employees.objects.get(EmployeeId=id)
         employee.delete()

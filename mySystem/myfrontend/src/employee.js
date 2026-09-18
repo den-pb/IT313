@@ -60,8 +60,12 @@ export class Employee extends Component{
  PhotoFileName:emp.PhotoFileName
  });
  }
- createClick(){
- fetch(variables.API_URL+'employee',{
+createClick(){
+  if(!this.state.EmployeeName || !this.state.Department || !this.state.DateOfJoining){
+   alert('Please fill Employee Name, Department and Date of Joining');
+   return;
+  }
+  fetch(variables.API_URL+'employee',{
  method:'POST',
  headers:{
  'Accept':'application/json',
@@ -82,8 +86,12 @@ export class Employee extends Component{
  alert('Failed');
  })
  }
- updateClick(){
- fetch(variables.API_URL+'employee',{
+updateClick(){
+  if(!this.state.EmployeeName || !this.state.Department || !this.state.DateOfJoining){
+   alert('Please fill Employee Name, Department and Date of Joining');
+   return;
+  }
+  fetch(variables.API_URL+'employee',{
  method:'PUT',
  headers:{
  'Accept':'application/json',
